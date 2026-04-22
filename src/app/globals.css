@@ -1,0 +1,676 @@
+:root {
+  --bg: #f3f8f4;
+  --bg-soft: #edf6f0;
+  --surface: #ffffff;
+  --surface-soft: #f7fbf8;
+  --text: #0f1f1a;
+  --muted: #60746c;
+  --border: rgba(17, 64, 47, 0.1);
+  --border-strong: rgba(17, 64, 47, 0.18);
+  --primary: #13805a;
+  --primary-deep: #0d5f43;
+  --primary-soft: #dff3ea;
+  --warning-soft: #fff1d8;
+  --danger-soft: #ffe5e8;
+  --danger: #c44a5c;
+  --shadow: 0 24px 60px rgba(13, 74, 52, 0.08);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(19, 128, 90, 0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(19, 128, 90, 0.06), transparent 24%),
+    var(--bg);
+  font-family: "Segoe UI", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+code {
+  font-family: monospace;
+}
+
+.eyebrow {
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  color: white;
+  background: linear-gradient(135deg, var(--primary), #1c9b6f);
+  box-shadow: 0 18px 36px rgba(19, 128, 90, 0.24);
+}
+
+.button-secondary {
+  color: var(--primary-deep);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.button-danger {
+  color: white;
+  background: linear-gradient(135deg, #cf5166, #b43d52);
+}
+
+.button-lg {
+  min-height: 3.3rem;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.login-panel {
+  width: min(1120px, 100%);
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.login-copy,
+.auth-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  border-radius: var(--radius-xl);
+}
+
+.login-copy {
+  position: relative;
+  overflow: hidden;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.login-copy::before,
+.login-copy::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(19, 128, 90, 0.08);
+}
+
+.login-copy::before {
+  width: 240px;
+  height: 240px;
+  top: -80px;
+  right: -40px;
+}
+
+.login-copy::after {
+  width: 200px;
+  height: 200px;
+  bottom: -70px;
+  left: -40px;
+}
+
+.login-copy h2 {
+  font-family: "Aptos Display", "Segoe UI Semibold", "Trebuchet MS", sans-serif;
+  font-size: clamp(2.25rem, 4vw, 3.8rem);
+  line-height: 1;
+  max-width: 12ch;
+}
+
+.login-copy p {
+  max-width: 48ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.feature-stack {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.feature-card {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(17, 64, 47, 0.08);
+}
+
+.feature-card strong {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.feature-card span {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.auth-card {
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+}
+
+.auth-title {
+  font-family: "Aptos Display", "Segoe UI Semibold", "Trebuchet MS", sans-serif;
+  font-size: 2rem;
+}
+
+.auth-subtitle,
+.auth-hint {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.auth-error {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  color: #8c2335;
+  background: var(--danger-soft);
+  border: 1px solid rgba(196, 74, 92, 0.2);
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field span {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  min-height: 3.1rem;
+  padding: 0.9rem 1rem;
+  color: var(--text);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: rgba(19, 128, 90, 0.36);
+  box-shadow: 0 0 0 4px rgba(19, 128, 90, 0.12);
+}
+
+.dashboard-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 292px minmax(0, 1fr);
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 1.25rem;
+  border-right: 1px solid var(--border);
+  background: rgba(247, 251, 248, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-mark {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--primary), #4fd49a);
+  color: white;
+  font-weight: 800;
+}
+
+.sidebar-title {
+  font-weight: 800;
+}
+
+.sidebar-subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.sidebar-footer {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  color: var(--muted);
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.sidebar-link:hover {
+  color: var(--text);
+  background: rgba(19, 128, 90, 0.08);
+  transform: translateX(2px);
+}
+
+.sidebar-link-active {
+  color: white;
+  background: linear-gradient(135deg, var(--primary), #1d9e72);
+  box-shadow: 0 16px 32px rgba(19, 128, 90, 0.2);
+}
+
+.sidebar-link-icon {
+  width: 1.5rem;
+  text-align: center;
+}
+
+.dashboard-main {
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  margin-top: 0.3rem;
+  font-family: "Aptos Display", "Segoe UI Semibold", "Trebuchet MS", sans-serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1;
+}
+
+.page-description {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  max-width: 62ch;
+  line-height: 1.6;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border);
+}
+
+.topbar-avatar {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(19, 128, 90, 0.14), rgba(19, 128, 90, 0.28));
+  color: var(--primary-deep);
+  font-weight: 800;
+}
+
+.topbar-name {
+  font-weight: 800;
+}
+
+.topbar-role {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.grid-three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stat-card,
+.section-card,
+.glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.stat-card {
+  padding: 1.1rem 1.2rem;
+}
+
+.stat-card-success {
+  background: linear-gradient(180deg, #f8fdfa, #edf8f1);
+}
+
+.stat-card-warning {
+  background: linear-gradient(180deg, #fffaf0, #fff3d9);
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.stat-value {
+  margin-top: 0.65rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.stat-hint {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.section-card {
+  padding: 1.2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: "Aptos Display", "Segoe UI Semibold", "Trebuchet MS", sans-serif;
+  font-size: 1.35rem;
+}
+
+.section-description {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.section-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table th {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table-empty {
+  text-align: center;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  background: #eef6f1;
+  color: var(--primary-deep);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.badge-success {
+  background: #dff5e8;
+}
+
+.badge-warning {
+  background: #fff2d8;
+  color: #8d5a00;
+}
+
+.badge-danger {
+  background: #ffe5e8;
+  color: #9b3041;
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.full-span {
+  grid-column: 1 / -1;
+}
+
+.empty-state {
+  padding: 2rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.empty-state h3 {
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--muted);
+}
+
+.inline-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.mini-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mini-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  background: var(--surface-soft);
+  border-radius: 18px;
+  border: 1px solid rgba(17, 64, 47, 0.06);
+}
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.metric-pill {
+  padding: 1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(223, 243, 234, 0.6), rgba(255, 255, 255, 0.9));
+  border: 1px solid rgba(17, 64, 47, 0.08);
+}
+
+.metric-pill strong {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 1.45rem;
+}
+
+.metric-pill span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.note-text {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.logout-form {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1120px) {
+  .login-panel,
+  .dashboard-shell,
+  .grid-cards,
+  .grid-two,
+  .grid-three,
+  .form-grid,
+  .metric-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .dashboard-main,
+  .login-page {
+    padding: 1rem;
+  }
+
+  .topbar,
+  .section-header {
+    flex-direction: column;
+  }
+
+  .feature-stack {
+    grid-template-columns: 1fr;
+  }
+}
